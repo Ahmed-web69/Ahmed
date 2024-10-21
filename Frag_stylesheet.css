@@ -311,11 +311,14 @@ body{
 }
 .mrow-img-container{
     display: flex;
-    padding-left: 3rem;
+    padding-left: 1rem;
     padding-top: 1rem;
-    gap: 1rem;
+    gap: 0.6rem;
 }
-.img-mrow{
+.Black-frag,
+.Grey-frag,
+.Blue-frag,
+.White-frag{
     width: 20rem;
     cursor: pointer;
 }
@@ -331,15 +334,25 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
+.img-text-mrow2{
+    display: flex;
+    gap: 0.6rem;
+}
 .mcolumn-img-container{
     display: flex;
     padding-left: 15rem;
     padding-top: 4rem;
     gap: 1rem;
 }
-.img-mcol{
+.Yellow-frag,
+.Orange-frag,
+.Black-M-frag{
     width: 20rem;
     cursor: pointer;
+}
+.img-text-mcol2{
+    display: flex;
+    gap: 1rem;
 }
 #bottom-frag-container{
     display: flex;
@@ -384,4 +397,76 @@ body{
     background-color: black;
     color: #fff;
     transition: background-color 0.3s;
+}
+
+@media(max-width:770px){
+    #menu{
+        display: none;
+    }
+    .searchicon{
+        display: none;
+    }
+    .search{
+        display: none;
+    }
+    .cart{
+        display: none;
+    }
+    .mrow-img-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .text-m-left{
+        margin-left: 2rem;
+    }
+    .text-m-right{
+        margin-right: -3rem;
+    }
+    .Black-frag{
+        width: 46rem;
+        margin-left: 2rem;
+    }
+    .frag-text{
+        padding-left: 2rem;
+    }
+    .frag-text2{
+        padding-left: 2rem;
+    }
+    .img-text-mrow2{
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+    .Grey-frag{
+        width: 15rem;
+    }
+    .Blue-frag{
+        width: 15rem;
+    }
+    .White-frag{
+        width: 15rem;
+    }
+    .mcolumn-img-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .Yellow-frag{
+        width: 46rem;
+        margin-left: -10rem;
+    }
+    .img-text-mcol2{
+        display: flex;
+        gap: 2rem;
+        margin-top: 1rem;
+        margin-left: -4rem;
+    }
+    .Orange-frag{
+        width: 15rem;
+    }
+    .Black-M-frag{
+        width: 15rem;
+    }
+    .bottom-frag-button{
+        margin-left: 18rem;
+    }
 }
