@@ -7,9 +7,18 @@
 
 body {
     background-color: #f5f5f5;
-    color: rgb(221, 201, 201);
+    /* color: rgb(221, 201, 201); */
     line-height: 1.6;
     padding: 2rem;
+}
+
+.circle {
+    margin-left: 30rem;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .cv-container {
@@ -43,7 +52,6 @@ h4{
     width: 20rem;
     height: 20rem;
     object-fit: cover;
-    border-radius: 8px;
     margin-bottom: 2rem;
 }
 
@@ -80,21 +88,13 @@ h4{
     /* border-bottom-color: #3498db; */
 }
 
-.skills-list {
-    list-style: none;
-}
-
-.skills-list li {
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    color: white;
-}
 
 .experience-item {
     margin-bottom: 1.5rem;
 }
 .experience-item p{
     width: 30rem;
+    color: rgb(221, 201, 201)
 }
 
 .experience-title {
@@ -109,6 +109,7 @@ h4{
     font-size: 0.9rem;
     color: white;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .objective {
@@ -119,6 +120,7 @@ h4{
 }
 .objective p{
     width: 30rem;
+    color: rgb(221, 201, 201)
 }
 
 a {
