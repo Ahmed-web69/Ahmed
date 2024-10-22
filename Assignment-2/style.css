@@ -22,7 +22,7 @@ body {
     background-size: cover;
     background-position: center;
     margin: 0;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 #top {
@@ -387,4 +387,72 @@ body {
     .carousel-item img {
         height: 36rem;
     }
+}
+
+footer{
+    margin-top: -9rem;
+    height: 100%;
+}
+.pannel1{
+    height: 50vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5rem;
+}
+.AboutinfoPannel ul li{
+    list-style: none;
+}
+.AboutinfoPannel li a{
+    text-decoration: none;
+    color: black;
+}
+.pannel2{
+    padding: 3%;
+    height: 50vh;
+    background-color: white;
+}
+.CopyrightText{
+    text-align: center;
+    margin-top: 8%;
+}
+.AboutinfoPannel{
+    display: flex;
+    justify-content: space-between;
+}
+.AboutinfoPannel img{
+    color: white;
+    height: 60%;
+    padding-left: 20%;
+}
+.footerlinks_UL>li>a,.pannel1>p{
+    color: white;
+    text-decoration: none;
+}
+.footerlinks_UL>li{
+    display: inline-block;
+}
+.pannel1>input{
+    padding: 1.2%;
+    text-align: center;
+    width: 35%;
+    border: none;
+    border-bottom: 1px solid white;
+}
+.footerlinks_UL>li ::after{
+    content: "|";
+    padding: 7px;
+}
+.pannel1 ul,.pannel1 input,.pannel1 p{
+    margin: 1.1%;
+}
+.pannel1 p{
+    font-size: x-large;
+}
+
+.AboutinfoPannel a:hover{
+    text-decoration: underline;
+    font-size: large;
 }
