@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: rgb(221, 201, 201);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+.cv-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: black;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 300px;
+    color: black;
+    padding: 2rem;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    margin-left: 10rem;
+}
+h1{
+    color:rgb(209, 15, 80);
+}
+h4{
+    color:rgb(209, 15, 80);
+}
+.profile-img {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: white;
+}
+.education p{
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: white;
+    
+}
+.education h5{
+    color: wheat;
+    font-size: large;
+}
+
+
+.section-title {
+    color:rgb(209, 15, 80);
+    margin: 1.5rem 0 1rem 0;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.sidebar .section-title {
+    color:rgb(209, 15, 80);
+    /* border-bottom-color: #3498db; */
+}
+
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.experience-item {
+    margin-bottom: 1.5rem;
+}
+.experience-item p{
+    width: 30rem;
+}
+
+.experience-title {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+}
+
+.experience-company {
+    font-size: 0.9rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.objective {
+    font-size: 1rem;
+    color: #666;
+    margin: 1rem 0 2rem 0;
+    line-height: 1.8;
+}
+.objective p{
+    width: 30rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.skills-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.skill {
+    margin-bottom: 1.5rem;
+}
+
+.skill-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.progress-bar {
+    height: 25px;
+    background-color: #333333;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: #ff69b4;
+    transition: width 1s ease-in-out;
+}
+
+/* Individual skill percentages */
+.design-software .progress {
+    width: 85%;
+}
+
+.visual-communication .progress {
+    width: 60%;
+}
+
+.branding .progress {
+    width: 75%;
+}
+
+.project-management .progress {
+    width: 90%;
+}
+
+.design-software .progress {
+    width: 100%;  /* Full bar */
+}
+
+.visual-communication .progress {
+    width: 50%;  /* Half bar */
+}
+
+.branding .progress {
+    width: 25%;  /* Quarter bar */
+}
+
+.project-management .progress {
+    width: 100%;  /* Full bar */
+}
+
+/* Optional: Add markers for quarter and half points */
+.progress-bar::before,
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar::before {
+    left: 25%;  /* Quarter marker */
+    background-color: black;
+}
+
+.progress-bar::after {
+    left: 50%;  /* Half marker */
+}
+
+.objective-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    text-align: center;
+    border: 2px solid rgb(209, 15, 80);
+    color: white;
+}
+
+.objective-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-container {
+    position: relative;
+    width: 20rem;
+    height: 20rem;
+    margin-bottom: 2rem;
+}
+
+.profile-img {
+    transition: all 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
