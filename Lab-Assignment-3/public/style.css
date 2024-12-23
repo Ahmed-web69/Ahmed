@@ -1,0 +1,508 @@
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+}
+.parallax-item {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .carousel-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh; 
+    scrollbar-width: none;
+  }
+
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .parallax-slide {
+    scroll-snap-align: start;
+    height: 100vh; /* Each slide takes full screen */
+  }
+
+#backgroundCarousel {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+}
+
+
+#top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+}
+
+.left {
+    display: flex;
+    gap: 45px;
+    color: white;
+}
+
+.right {
+    margin-top: 10px;
+    display: flex;
+    color: white;
+}
+
+
+#menu {
+    margin-top: 18px;
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    position: relative;
+}
+
+.line {
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.line-big {
+    width: 100%;
+}
+
+.line-small {
+    width: 60%;
+}
+
+.middle {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 80vh;
+    justify-content: space-between;
+    color: white;
+    margin-top: 0; 
+    position: absolute;
+    width: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.mleft,
+.mright {
+    display: flex;
+    align-items: center;
+    pointer-events: auto; /* Re-enable clicks for these elements */
+}
+
+.mleft {
+    margin-left: 20px;
+}
+
+.mright {
+    margin-right: 20px; 
+}
+
+.arrow {
+    height: 20px; 
+    margin: 0 10px; 
+}
+
+.w, .k {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px; 
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    padding-top: 0; /* Remove top padding */
+    gap: 20px; /* Reduce gap between items */
+    position: absolute; /* Position absolutely */
+    bottom: 30px; /* Position from bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    width: 100%; /* Full width */
+}
+
+.bottom-menu {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #f8f8f8;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.parallax-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 80px 0 80px; /* Add padding to accommodate fixed header and bottom menu */
+}
+
+.menu-container {
+    position: absolute;
+    background-color: black;
+    top: 0px;
+    left: 0px;
+    display: none;
+    padding: 0px;
+    width: 28rem;
+    height: 42rem;
+    margin-top: -4rem;
+    margin-left: -2.5rem;
+    overflow-y: auto;
+}
+
+#menu:hover .menu-container {
+    display: block;
+}
+
+.menu-logo {
+    color: lightseagreen;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    padding: 10%;
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.menu-middle{
+    display: flex;
+    gap: 20px;
+    margin-left: 3rem;
+}
+.menu-middle a {
+    color: white;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    display: block;
+    padding: 5px 0;
+    /* letter-spacing: 1.5px; */
+    font-size: 18px;
+    
+}
+.menu-middle a:hover{
+    color: black;
+    background-color: yellow;
+    text-decoration: underline;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.menu-bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4rem;
+    margin-left: 3rem;
+}
+
+.inner-bottom {
+    position: relative;
+    display: block;
+}
+.frag{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    padding: 5px 0;
+    cursor: pointer;
+}
+.inner-bottom > a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    padding: 5px 0;
+    cursor: pointer;
+
+}
+
+.inner-inner {
+    position: absolute;
+    display: none; 
+    background-color: black;
+    top: 100%;
+    left: 0;
+    z-index: 1; 
+    width: 200px;
+}
+
+.inner-bottom:hover .inner-inner {
+    display: block; 
+}
+
+.inner-inner a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    color: wheat;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.inner-inner > a:hover {
+    background-color: red;
+    color: black;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+}
+
+.inner-bottom > a:hover{
+    background-color: white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+}
+.home{
+    text-decoration: none;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    /* letter-spacing: 1.5px; */
+}
+.home:hover,.scan:hover{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 8px;
+}
+.scan{
+    text-decoration: none;
+    display: block;
+    font-family:Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    /* letter-spacing: 1.5px; */
+    padding-top: 2rem;
+}
+.logo{
+    font-size: xx-large;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 3rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+.search{
+    color: #f8f8f8;
+    text-decoration: none;
+    font-size:16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 2px;
+    padding-right: 1rem;
+}
+.search:hover{
+    font-size: 18px;
+    color: darkred;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.login{
+    color: #f8f8f8;
+    text-decoration: none;
+    font-size:16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.login:hover{
+    font-size: 18px;
+    color: darkred;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.admin{
+    text-decoration: none; 
+    color: #f8f8f8; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.admin:hover{
+    font-size: 18px;
+    color: darkred;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.sicon{
+    width: 75%;
+    cursor: pointer;
+}
+.cicon{
+    width: 65%;
+    cursor: pointer;
+}
+
+.bottom-smaller{
+    display: none;
+}
+.carousel-item img{
+    height: 41rem;
+}
+
+
+@media(max-width:810px){
+    body{
+        background-repeat: repeat;
+        background-size: cover;
+        background-position:center;
+    }
+    #menu{
+        display: none;
+    }
+    .searchicon{
+        display: none;
+    }
+    .search{
+        display: none;
+    }
+    .login{
+        display: none;
+    }
+    .carousel-item img{
+        height: 42rem;
+    }
+    .bottom{
+        display: none;
+    }
+    .bottom-smaller{
+        display: flex;
+        flex-direction: column;
+    }
+    .bottom-smaller a{
+        text-decoration: none;
+    }
+    .text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight:bold;
+        color: #f8f8f8;
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+    .explore{
+        display: flex;
+        color: #f8f8f8;
+        border: 3px solid white;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 5px;
+        justify-content: end;
+        align-items: end;
+        margin-bottom: 10px;
+    }
+}
+
+@media(min-width: 811px , max-width: 1070px) {
+    .bottom-smaller{
+        display: none;
+    }
+    .carousel-item img{
+        height: 36rem;
+    }
+    
+}
+
+footer{
+    height: 100%;
+}
+.pannel1{
+    height: 50vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5rem;
+}
+.pannel2{
+    padding: 3%;
+    height: 50vh;
+    background-color: white;
+}
+.CopyrightText{
+    text-align: center;
+    margin-top: 8%;
+}
+.AboutinfoPannel{
+    display: flex;
+    justify-content: space-between;
+}
+.AboutinfoPannel img{
+    color: white;
+    height: 60%;
+    padding-left: 20%;
+}
+.footerlinks_UL>li>a,.pannel1>p{
+    color: white;
+    text-decoration: none;
+}
+.footerlinks_UL>li{
+    display: inline-block;
+}
+.pannel1>input{
+    padding: 1.2%;
+    text-align: center;
+    width: 35%;
+    border: none;
+    border-bottom: 1px solid white;
+}
+.footerlinks_UL>li ::after{
+    content: "|";
+    padding: 7px;
+}
+.pannel1 ul,.pannel1 input,.pannel1 p{
+    margin: 1.1%;
+}
+.pannel1 p{
+    font-size: x-large;
+}
+
+.AboutinfoPannel a:hover{
+    text-decoration: underline;
+    font-size: large;
+    font-weight: bold;
+    color: crimson;
+}
+.AboutinfoPannel a{
+    text-decoration: none;
+    color: black;
+}
+
+
