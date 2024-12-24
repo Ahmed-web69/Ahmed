@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .cart-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .cart-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .cart-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .table {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .table thead th {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .table tbody tr {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .table tbody tr:hover {
+            transform: translateY(-3px);
+        }
+
+        .table tbody td {
+            padding: 20px;
+            vertical-align: middle;
+            background: white;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.2);
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+        }
+
+        .menu-logo {
+            color: #2ecc71;
+            font-family: 'Poppins', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .menu-logo:hover {
+            color: #3498db;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            border-radius: 12px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image:hover {
+            transform: scale(1.1);
+        }
+
+        .total-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .checkout-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .payment-method {
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-3px);
+            border-color: #4f46e5;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.1);
+        }
+
+        .payment-method.active {
+            border-color: #4f46e5;
+            background-color: #f5f7ff;
+        }
+
+        .payment-icon {
+            width: 64px;
+            height: 64px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .card-type {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .card-type:hover {
+            border-color: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        .card-type.active {
+            border-color: #4f46e5;
+            background-color: #f5f7ff;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .visa-bg {
+            background: #1a1f71;
+        }
+
+        .mastercard-bg {
+            background: #eb001b;
+        }
+
+        .form-control:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .payment-details {
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .payment-details.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            border-radius: 2px;
+        }
+
+        .mobile-wallet-input {
+            display: none;
+        }
+
+        .mobile-wallet-input.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .size-selector {
+            margin-top: 0.5rem;
+        }
+
+        .size-input {
+            padding: 0.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .size-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+            outline: none;
+        }
+
+        .base-price {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .size-input option {
+            padding: 8px;
+        }
+
+        .size-selector::after {
+            content: '* Price adjusts with size';
+            display: block;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5" id="cart">
+        <a class="menu-logo" href="/">ZELLBURY</a>
+        <div class="cart-title">Shopping Cart</div>
+
+        <div class="cart-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Total Quantity</th>
+                        <th>Category</th>
+                        <th>Image</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let cartTotal = 0; %>
+                    <% products.forEach((product, index) => { %>
+                        <% const price = parseFloat(product.price) || 0; %>
+                        <% cartTotal += price; %>
+                        <tr data-product-id="<%= index %>">
+                            <td><%= product.description %></td>
+                            <td class="base-price">Rs.<%= price.toFixed(2) %></td>
+                            <td><%= product.quantity || 1 %></td>
+                            <td><%= product.categoryId %></td>
+                            <td>
+                                <img src="<%= product.src %>" alt="" class="product-image" style="width: 100px; height: 100px;">
+                            </td>
+                            <td>
+                                <div class="quantity-control">
+                                    <button class="quantity-btn decrease-btn" onclick="updateQuantity(<%= index %>, -1)">-</button>
+                                    <input type="number" 
+                                           name="Quantity" 
+                                           class="quantity-input" 
+                                           value="1" 
+                                           min="1" 
+                                           onchange="updateSubtotal(<%= index %>)" 
+                                           data-price="<%= price %>">
+                                    <button class="quantity-btn increase-btn" onclick="updateQuantity(<%= index %>, 1)">+</button>
+                                </div>
+                                <div class="size-selector">
+                                    <select name="size" class="form-select size-input" onchange="updateSize(<%= index %>)">
+                                        <% if (product.sizes && product.sizes.length > 0) { %>
+                                            <% product.sizes.forEach(size => { %>
+                                                <option value="<%= size %>">
+                                                    <%= size === 'S' ? `Small (Rs.${price.toFixed(2)})` :
+                                                        size === 'M' ? `Medium (Rs.${(price + 800).toFixed(2)})` :
+                                                        `Large (Rs.${(price + 1500).toFixed(2)})` %>
+                                                </option>
+                                            <% }); %>
+                                        <% } else { %>
+                                            <option value="M">Medium (Rs.<%= (price + 800).toFixed(2) %>)</option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="subtotal">Rs.<%= price.toFixed(2) %></td>
+
+                            <td>
+                                <a href="/cart/delete/<%= product._id %>" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+
+            <div class="total-section">
+                <h5 class="total-amount">
+                    Total: <span id="cart-total">
+                        <input type="number" 
+                               value="<%= cartTotal.toFixed(2) %>" 
+                               name="Total" 
+                               style="border: none; outline: none; width: auto;" 
+                               readonly>
+                    </span>
+                </h5>
+            </div>
+
+            <div class="checkout-container">
+                <button class="checkout-btn" id="proceed-btn">
+                    <i class="fas fa-shopping-cart me-2"></i>
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout">
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-header">
+                    <h1 class="h3 mb-0">Secure Checkout</h1>
+                </div>
+    
+                <div class="p-4 p-md-5">
+                    <form id="checkoutForm" method="post" action="/cart">
+                        <!-- Personal Information -->
+                        <div class="mb-5">
+                            <h2 class="section-title h5">
+                                <i class="fas fa-user me-2"></i>Personal Information
+                            </h2>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" name="Username" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="Email" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" placeholder="03XX-XXXXXXX" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Postal Code</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Shipping Address</label>
+                                    <input type="text" class="form-control" name="Address" required>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Payment Methods -->
+                        <div class="mb-5">
+                            <h2 class="section-title h5">
+                                <i class="fas fa-wallet me-2"></i>Payment Method
+                            </h2>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="payment-method" data-method="cash">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-mobile-alt fa-2x text-primary"></i>
+                                        </div>
+                                        <h6 class="mb-0">Cash</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="payment-method" data-method="jazzcash">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-mobile-alt fa-2x text-primary"></i>
+                                        </div>
+                                        <h6 class="mb-0">JazzCash</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="payment-method" data-method="easypaisa">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-mobile-alt fa-2x text-success"></i>
+                                        </div>
+                                        <h6 class="mb-0">EasyPaisa</h6>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="payment-method" data-method="card">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-credit-card fa-2x text-danger"></i>
+                                        </div>
+                                        <h6 class="mb-0">Card Payment</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Mobile Wallet Input -->
+                        <div id="mobileWalletInput" class="mobile-wallet-input mb-5">
+                            <div class="mb-3">
+                                <label class="form-label">Mobile Wallet Number</label>
+                                <div class="input-group">
+                                    <input type="tel" class="form-control" placeholder="03XX-XXXXXXX">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </span>
+                                </div>
+                                <div class="form-text" id="walletHelperText"></div>
+                            </div>
+                        </div>
+    
+                        <!-- Card Selection -->
+                        <div id="cardSelection" class="payment-details mb-5">
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <div class="card-type" data-card="visa">
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon visa-bg me-3">
+                                                VISA
+                                            </div>
+                                            <span>Visa Card</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-type" data-card="mastercard">
+                                        <div class="d-flex align-items-center">
+                                            <div class="card-icon mastercard-bg me-3">
+                                                MC
+                                            </div>
+                                            <span>Mastercard</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div id="cardDetails" class="payment-details">
+                                <div class="row g-4">
+                                    <div class="col-12">
+                                        <label class="form-label">Card Number</label>
+                                        <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="16">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Expiry Date</label>
+                                        <input type="text" class="form-control" placeholder="MM/YY" maxlength="5">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">CVV</label>
+                                        <input type="text" class="form-control" placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <a href="/"><button type="submit" class="btn btn-primary w-100 py-3">
+                            Complete Purchase
+                        </button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let checkout = document.getElementById("checkout");
+        let proceed = document.getElementById("proceed-btn");
+        let cart = document.getElementById("cart");
+        checkout.style.display ="none";
+        cart.style.display ="block";
+        proceed.addEventListener("click",function(){
+            checkout.style.display ="block";
+            cart.style.display ="none";
+        })
+
+    </script>
+
+    <script>
+        function updateQuantity(productIndex, change) {
+            const row = document.querySelector(`tr[data-product-id="${productIndex}"]`);
+            const input = row.querySelector('.quantity-input');
+            const newValue = Math.max(1, parseInt(input.value) + change);
+            input.value = newValue;
+            updateSubtotal(productIndex);
+        }
+
+        function updateSubtotal(productIndex) {
+            const row = document.querySelector(`tr[data-product-id="${productIndex}"]`);
+            const quantity = parseInt(row.querySelector('.quantity-input').value) || 1;
+            const price = parseFloat(row.querySelector('.quantity-input').dataset.price) || 0;
+            const subtotal = Math.round((price * quantity) * 100) / 100;
+            row.querySelector('.subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const subtotals = Array.from(document.querySelectorAll('.subtotal'))
+                .map(el => parseFloat(el.textContent.replace('₹', '')) || 0);
+            const total = Math.round(subtotals.reduce((sum, value) => sum + value, 0) * 100) / 100;
+            document.querySelector('input[name="Total"]').value = total.toFixed(2);
+        }
+
+        // Initialize totals when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('tr[data-product-id]');
+            rows.forEach((row, index) => {
+                updateSubtotal(index);
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const cardSelection = document.getElementById('cardSelection');
+            const cardDetails = document.getElementById('cardDetails');
+            const mobileWalletInput = document.getElementById('mobileWalletInput');
+            const walletHelperText = document.getElementById('walletHelperText');
+            const cardTypes = document.querySelectorAll('.card-type');
+
+            // Payment method selection
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    // Reset all methods
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    method.classList.add('active');
+
+                    const methodType = method.dataset.method;
+                    
+                    // Handle mobile wallet methods
+                    if (methodType === 'jazzcash' || methodType === 'easypaisa') {
+                        cardSelection.classList.remove('active');
+                        mobileWalletInput.classList.add('active');
+                        walletHelperText.textContent = `Enter your ${methodType === 'jazzcash' ? 'JazzCash' : 'EasyPaisa'} registered mobile number`;
+                    }
+                    // Handle card payment
+                    else if (methodType === 'card') {
+                        mobileWalletInput.classList.remove('active');
+                        cardSelection.classList.add('active');
+                    }
+                });
+            });
+
+            // Card type selection
+            cardTypes.forEach(card => {
+                card.addEventListener('click', () => {
+                    cardTypes.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    cardDetails.classList.add('active');
+                });
+            });
+
+            // Form submission
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your form submission logic here
+                alert('Order placed successfully!');
+                document.getElementById('checkoutForm').submit();
+            });
+        });
+    </script>
+
+    <script>
+        function updateSize(productIndex) {
+            const row = document.querySelector(`tr[data-product-id="${productIndex}"]`);
+            const sizeSelect = row.querySelector('.size-input');
+            const selectedSize = sizeSelect.value;
+            // Get the original base price from the base-price cell
+            const basePrice = parseFloat(row.querySelector('.base-price').textContent.replace('Rs.', ''));
+            let adjustedPrice = basePrice;
+            
+            // Adjust price based on size
+            if (selectedSize === 'M') {
+                adjustedPrice = basePrice + 800;
+            } else if (selectedSize === 'L') {
+                adjustedPrice = basePrice + 1500;
+            }
+            
+            // Update the price display and data attribute
+            row.querySelector('.quantity-input').dataset.price = adjustedPrice;
+            
+            // Update subtotal
+            updateSubtotal(productIndex);
+        }
+
+        function updateSubtotal(productIndex) {
+            const row = document.querySelector(`tr[data-product-id="${productIndex}"]`);
+            const quantity = parseInt(row.querySelector('.quantity-input').value) || 1;
+            const price = parseFloat(row.querySelector('.quantity-input').dataset.price) || 0;
+            const subtotal = Math.round((price * quantity) * 100) / 100;
+            row.querySelector('.subtotal').textContent = `Rs.${subtotal.toFixed(2)}`;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const subtotals = Array.from(document.querySelectorAll('.subtotal'))
+                .map(el => parseFloat(el.textContent.replace('Rs.', '')) || 0);
+            const total = Math.round(subtotals.reduce((sum, value) => sum + value, 0) * 100) / 100;
+            document.querySelector('input[name="Total"]').value = total.toFixed(2);
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+

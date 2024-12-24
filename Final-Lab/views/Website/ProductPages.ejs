@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Frag_stylesheet.css">
+    <link rel="icon" type="image/png"
+        href="//zellbury.com/cdn/shop/files/zellbury_favicon.png?crop=center&height=32&v=1712131544&width=32">
+    <title>ZELLBURY - Real Fashion, Real Prices - Best Online Fashion store</title>
+    <style>
+        .nav-link {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            padding: 0 1rem;
+        }
+        .nav-link:hover {
+            color: #ddd;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .wishlist-btn {
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="top-container">
+        <div id="top">
+            <div class="left">
+                <div id="menu">
+                    <div class="line line-big"></div>
+                    <div class="line line-small"></div>
+                    <div class="menu-container">
+                        <div class="menu-top">
+                            <a class="menu-logo" href="/">ZELLBURY</a>
+                        </div>
+                        <div class="menu-middle">
+                            <a href="">WOMEN</a>
+                            <a href="">MEN</a>
+                            <a href="">KIDS</a>
+                        </div>
+
+                        <div class="menu-bottom">
+                            <a class="frag" href="/Fragrance">FRAGRANCE</a>
+                            <div class="inner-bottom">
+                                <a href="/Men">T-SHIRT AND POLO</a>
+                                <div class="inner-inner">
+                                    <a href="#">T-SHIRT</a>
+                                    <a href="#">POLO</a>
+                                </div>
+                            </div>
+                            <div class="inner-bottom">
+                                <a href="#">PANTS</a>
+                                <div class="inner-inner">
+                                    <a href="#">CHINOS</a>
+                                    <a href="#">JEANS</a>
+                                </div>
+                            </div>
+                            <div class="inner-bottom">
+                                <a href="">SHIRTS
+                                    <div class="inner-inner">
+                                        <a href="#">CASUAL SHIRT</a>
+                                        <a href="#">FORMAL SHIRTS</a>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="inner-bottom">
+                                <a href="">ACCESSORIES
+                                    <div class="inner-inner">
+                                        <a href="#">MAN WALLETS</a>
+                                        <a href="#">BELTS</a>
+                                        <a href="#">CARD HOLDER</a>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="inner-bottom">
+                                <a href="">UNSTITCHED
+                                    <div class="inner-inner">
+                                        <a href="#">COTTON</a>
+                                        <a href="#">WASH & WEAR</a>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="inner-bottom">
+                                <a href="">EASTERN WEAR
+                                    <div class="inner-inner">
+                                        <a href="#">SHALWAR KAMEEZ</a>
+                                        <a href="#">KURTA</a>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="inner-bottom">
+                                <a href="">OUTWEAR
+                                    <div class="inner-inner">
+                                        <a href="#">HOODIES</a>
+                                        <a href="#">SWEAT SHIRTS</a>
+                                        <a href="#">JACKETS</a>
+                                    </div>
+                                </a>
+                            </div>
+                            <a class="home" href="">HOME</a>
+                            <a href="" class="scan">#SCAN BARCODE</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="logo" href="/">
+                    ZELLBURY
+                </a>
+            </div>
+            <div class="right">
+                <div class="searchicon">
+                    <img class="sicon" src="/Frag_pics/White_search-icon.png" alt="">
+                </div>
+                <div class="search">SEARCH</div>
+                <div class="user-auth">
+                    <% if (locals.user) { %>
+                        <a href="/wishlist" class="nav-link">Wishlist</a>
+                        <a href="/user/logout" class="nav-link">Logout</a>
+                    <% } else { %>
+                        <a href="/user/login" class="nav-link">Login</a>
+                    <% } %>
+                </div>
+                <div class="cart">
+                    <a href="/cart">
+                        <img class="cicon" src="/Frag_pics/White-bag-icon.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="top-img-container">
+            <div class="text">FOR HIM</div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <a href="/Fragrance"><img class="img-top" src="Frag_pics/Frag_small.avif" alt="">
+                </div></a>
+                <div class="bubble-text">FRAGRANCE</div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <a href="/Men"><img class="img-top" src="Frag_pics/Men-Polo-small.avif" alt=""></a>
+                    <div class="bubble-text">T-SHIRTS &
+                        <div class="bubble-Polo-text">POLO</div>
+                    </div>
+                </div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <img class="img-top" src="Frag_pics/Pant-small.webp" alt="">
+                </div>
+                <div class="bubble-Pant-text">PANTS</div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <img class="img-top" src="Frag_pics/Shirt-small.avif" alt="">
+                </div>
+                <div class="bubble-Shirt-text">SHIRTS</div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <img class="img-top" src="Frag_pics/Wallet-small.avif" alt="">
+                </div>
+                <div class="bubble-text">ACCESSORIES</div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <img class="img-top" src="Frag_pics/Wear-small.webp" alt="">
+                </div>
+                <div class="bubble-East-text">EASTERN
+                    <div class="bubble-Wear-text">WEAR</div>
+                </div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <img class="img-top" src="Frag_pics/Cotton-small.webp" alt="">
+                </div>
+                <div class="bubble-text">UNSTITCHED</div>
+            </div>
+            <div class="img-container">
+                <div class="img-top-container">
+                    <img class="img-top" src="Frag_pics/Outerwear-small.webp" alt="">
+                </div>
+                <div class="bubble-Out-text">OUTERWEAR</div>
+            </div>
+        </div>
+            <div class="mrow-img-container">
+                <% for (let j=0; j < product.length; j++) { if (j % 4===0) { <!-- Start a new row every 4 items -->
+                    %>
+                    <div class="row">
+                        <% } %>
+                            <div class="col-4 m-3">
+                                <div class="card" style="width: 18rem; position: relative; overflow: hidden;">
+                                    <div class="img-hover-container">
+                                        <img class="Frag" src="<%= product[j].src %>" alt="Card image cap">
+                                        <div class="button-container">
+                                            <a href="/add-to-cart/<%= product[j]._id %>" class="btn btn-primary hover-cart-btn">Add To Cart</a>
+                                            <% if (locals.user) { %>
+                                                <button class="btn btn-outline-primary wishlist-btn" 
+                                                        data-product-id="<%= product[j]._id %>"
+                                                        onclick="addToWishlist(this)">
+                                                    Add to Wishlist
+                                                </button>
+                                            <% } else { %>
+                                                <a href="/user/login"><button class="btn btn-outline-primary wishlist-btn" 
+                                                    >
+                                                    Add to Wishlist
+                                                </button></a>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= product[j].title %>
+                                        </h5>
+                                        <p class="card-description">
+                                            <%= product[j].description %>
+                                        </p>
+                                        <p class="card-text">PKR: <%= product[j].price %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% if ((j + 1) % 4===0 || j===product.length - 1) { <!-- Close the row -->
+                                %>
+                    </div>
+                    <% } } %>
+            </div>
+        </div>
+    </div>
+    <div id="bottom-frag-container">
+        <div class="bottom-top-text">Buy Perfumes for Men: Fragrances for Men in Pakistan Online</div>
+        <p class="bottom-para1">Step up your fragrance game with our elite collection of perfumes for men. Designed
+            to make a statement, these scents are among the best perfumes for men available in Pakistan, perfect for
+            those who appreciate class and appeal. Our range of fragrances for men offers something for every
+            occasion, ensuring you always smell your best.</p>
+        <p class="bottom-para2">Shop from our extensive collection of men’s perfumes in Pakistan and learn why
+            Zellbury’s perfumes are considered the best fragrances for men. Each gents perfume in our collection is
+            crafted to deliver a unique and unforgettable scent experience. If you are looking for a classic male
+            perfume with a modern twist, we have men’s cologne to suit every taste.</p>
+        <button class="bottom-frag-button">Show More</button>
+    </div>
+    </div>
+    <script src="/js/wishlist.js"></script>
+    <script>
+    function redirectToLogin() {
+        window.location.href = '/user/login';
+    }
+
+    async function addToWishlist(button) {
+        try {
+            const productId = button.dataset.productId;
+            
+            const response = await fetch('/wishlist/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ productId })
+            });
+            
+            const data = await response.json();
+            
+            if (response.status === 401) {
+                window.location.href = '/user/login';
+                return;
+            }
+            
+            if (data.success) {
+                button.textContent = '✓ Added to Wishlist';
+                button.disabled = true;
+                button.style.backgroundColor = '#4CAF50';
+                button.style.color = 'white';
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error adding to wishlist');
+        }
+    }
+    </script>
+</body>
+
+</html>

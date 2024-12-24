@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .form-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .header-gradient {
+            background: linear-gradient(to right, #ff1493, #8a2be2);
+            color: white;
+        }
+        .form-control:focus {
+            border-color: #8a2be2;
+            box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25);
+        }
+        .logo1{
+            display: flex;
+            margin-bottom: 30rem;
+            justify-content: center;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo1 mx-auto ">
+        <a href="/" class="logo" style="font-size: 3.2rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: rgb(241, 236, 236);
+        cursor: pointer;
+        text-decoration: none;">ZELLBURY</a>
+      </div>
+    <div class="container" style="margin-left: -18rem; margin-top: 1rem;">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card form-card" id="form1">
+                    <div class="card-header text-center header-gradient py-4">
+                        <h2 class="card-title mb-0" id="formTitle">Welcome Back!</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="authForm1" method="post" action="/login">
+                            <div id="usernameGroup" class="mb-3">
+                                <label for="username" class="form-label text-danger">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label text-info">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                            </div>
+                            <div id="errorMessage" class="alert alert-danger mb-3" style="display: none;"></div>
+                            <button type="submit" class="btn btn-primary w-100 py-2" id="submitButton">Sign In</button>
+                        </form>
+                        
+                    </div>
+                    <div class="card-footer text-center bg-light">
+                        <button id="toggleForm" class="btn btn-link text-primary">New here? Create an Account</button>
+                    </div>
+                </div>
+
+                <div class="card form-card" id="form2">
+                    <div class="card-header text-center header-gradient py-4">
+                        <h2 class="card-title mb-0" id="formTitle">Welcome Back!</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="authForm2" method="post" action="/register">
+                            <div id="usernameGroup" class="mb-3">
+                                <label for="username" class="form-label text-danger">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter creative username" required>
+                            </div>
+                            <div id="email" class="mb-3" >
+                                <label for="email" class="form-label text-danger">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label text-info">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Create a strong password" required>
+                            </div>
+                            <div id="confirmPasswordGroup" class="mb-3">
+                                <label for="confirmPassword" class="form-label text-success">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password">
+                            </div>
+                            <div id="errorMessage" class="alert alert-danger mb-3" style="display: none;"></div>
+                            <button type="submit" class="btn btn-primary w-100 py-2" id="submitButton">Create New Account</button>
+                        </form>
+                        
+                    </div>
+                    <div class="card-footer text-center bg-light">
+                        <a href="/admin/login"><button id="toggleForm" class="btn btn-link text-primary">Already have an account? Sign In</button></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form1 = document.getElementById('form1');
+            const form2 = document.getElementById('form2');
+            const form3 = document.getElementById('form3');
+            const toggleButton = document.getElementById('toggleForm');
+            const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+            const errorMessage = document.getElementById('errorMessage');
+
+
+            let isLogin = true;
+
+            toggleButton.addEventListener('click', function() {
+                isLogin = !isLogin;
+                updateFormMode();
+            });
+
+            function updateFormMode() {
+                if (isLogin) {
+                    form2.style.display ='none'
+                } else {
+                    form1.style.display = 'none';
+                    form2.style.display = 'block';
+                }
+                // Reset form
+                form.reset();
+                errorMessage.style.display = 'none';
+            }
+            updateFormMode();
+        });
+    </script>
+</body>
+</html>

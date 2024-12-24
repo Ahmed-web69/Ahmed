@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Frag_stylesheet.css">
+    <title>My Wishlist - ZELLBURY</title>
+    <style>
+        .wishlist-main-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .wishlist-header {
+            text-align: center;
+            margin: 2rem 0;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .wishlist-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .wishlist-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .wishlist-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .wishlist-item-details {
+            padding: 15px;
+        }
+
+        .wishlist-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .wishlist-item-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 10px 0;
+        }
+
+        .wishlist-item-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .wishlist-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .add-to-cart-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #45a049;
+        }
+
+        .remove-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+            transition: background-color 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background-color: #ff3333;
+        }
+
+        .empty-wishlist {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .empty-wishlist p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .continue-shopping-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .continue-shopping-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="top-container">
+        <!-- Copy your existing header/navigation from ProductPages.ejs -->
+        <div id="top">
+            <div class="left">
+                <div id="menu">
+                    <div class="line line-big"></div>
+                    <div class="line line-small"></div>
+                    <!-- Copy menu content from ProductPages.ejs -->
+                </div>
+                <a class="logo" href="/">ZELLBURY</a>
+            </div>
+            <div class="right">
+                <div class="searchicon">
+                    <img class="sicon" src="/Frag_pics/White_search-icon.png" alt="">
+                </div>
+                <div class="search">SEARCH</div>
+                <div class="user-auth">
+                    <% if (locals.user) { %>
+                        <a href="/user/logout" class="auth-link">Logout</a>
+                    <% } else { %>
+                        <a href="/user/login" class="auth-link">Login</a>
+                    <% } %>
+                </div>
+                <div class="cart">
+                    <a href="/cart">
+                        <img class="cicon" src="/Frag_pics/White-bag-icon.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="wishlist-main-container">
+            <h1 class="wishlist-header">My Wishlist</h1>
+
+            <% if (wishlistItems && wishlistItems.length > 0) { %>
+                <div class="wishlist-grid">
+                    <% wishlistItems.forEach(item => { %>
+                        <% if (item.productId) { %>
+                            <div class="wishlist-item" id="wishlist-item-<%= item._id %>">
+                                <img src="/<%= item.productId.src %>" alt="<%= item.productId.title %>">
+                                <div class="wishlist-item-details">
+                                    <h3 class="wishlist-item-title"><%= item.productId.title %></h3>
+                                    <p class="wishlist-item-description"><%= item.productId.description %></p>
+                                    <p class="wishlist-item-price">PKR <%= item.productId.price %></p>
+                                    <div class="wishlist-btn-group">
+                                        <a href="/add-to-cart/<%= item.productId._id %>" class="add-to-cart-btn">
+                                            Add to Cart
+                                        </a>
+                                        <button class="remove-btn" onclick="removeFromWishlist('<%= item._id %>')">
+                                            Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <div class="empty-wishlist">
+                    <p>Your wishlist is empty</p>
+                    <a href="/" class="continue-shopping-btn">Continue Shopping</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        async function removeFromWishlist(itemId) {
+            try {
+                const response = await fetch(`/wishlist/remove/${itemId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    const item = document.getElementById(`wishlist-item-${itemId}`);
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    
+                    setTimeout(() => {
+                        item.remove();
+                        
+                        // Check if wishlist is empty
+                        const remainingItems = document.querySelectorAll('.wishlist-item');
+                        if (remainingItems.length === 0) {
+                            const wishlistGrid = document.querySelector('.wishlist-grid');
+                            wishlistGrid.innerHTML = `
+                                <div class="empty-wishlist">
+                                    <p>Your wishlist is empty</p>
+                                    <a href="/" class="continue-shopping-btn">Continue Shopping</a>
+                                </div>
+                            `;
+                        }
+                    }, 300);
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error removing item from wishlist');
+            }
+        }
+    </script>
+</body>
+</html> 
